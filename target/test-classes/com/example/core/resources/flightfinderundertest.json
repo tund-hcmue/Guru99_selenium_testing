@@ -1,0 +1,30 @@
+[
+    {
+        "username": "1303",
+        "password": "Guru99",
+        "type": "oneway",
+        "passenger": "2",
+        "departingFrom": "London",
+        "onMonth": "5",
+        "onDay": "11",
+        "arrivingIn": "Paris",
+        "returningMonth": "7",
+        "returningDay": "22",
+        "serviceClass": "First",
+        "airline": "Blue Skies Airlines"
+    },
+    {
+        "username": "1303",
+        "password": "Guru99",
+        "type": "roundtrip",
+        "passenger": "4",
+        "departingFrom": "Paris",
+        "onMonth": "4",
+        "onDay": "22",
+        "arrivingIn": "London",
+        "returningMonth": "5",
+        "returningDay": "27",
+        "serviceClass": "Business",
+        "airline": "Unified Airlines"
+    }
+]

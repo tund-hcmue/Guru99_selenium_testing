@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.openqa.selenium.JavascriptExecutor;
 
 public class WebKeyword {
@@ -21,10 +22,15 @@ public class WebKeyword {
         this.wait = new WebDriverWait(driver, timout);
     }
 
+    public enum typeOfSelect{
+        selectByValue, 
+        selectByVisibleText, 
+        selectByIndex
+    }
+
     /**
      * Open Url
      * @param url
-     * @throws Exception
      */
     public void openUrl(String url) throws Exception{
         if(!(url.startsWith("http://") || url.startsWith("https://"))){
@@ -51,7 +57,6 @@ public class WebKeyword {
 
     public String getText(WebElement webElement){
         return webElement.getText();
-        // return new WebKeyword(driver);
     }
 
     /**
@@ -76,29 +81,28 @@ public class WebKeyword {
     }
 
     /**
-     * Set value for element by value
-     * @param webElement element to select value
-     * @param value value to select
-     * @return keyword selectByValue
+     * set value for Element by Select
+     * @param webElement element to set value
+     * @param type type of select element (e.g selectByValue, selectByVisibleText, selectByIndex)
+     * @param value value of element
+     * @return WebKeyword to set value for element
      */
-    public WebKeyword selectByValue(WebElement webElement, String value){
-        Select ddl = new Select(webElement);
-        ddl.selectByValue(value);
+    public WebKeyword setValueForElement(WebElement webElement, typeOfSelect type, String value){
+        Select ddlElement = new Select(webElement);
+        switch (type){
+            case selectByValue:
+                ddlElement.selectByValue(value);            
+                break;
+            case selectByVisibleText:
+                ddlElement.selectByVisibleText(value);
+                break;
+            case selectByIndex:
+                ddlElement.selectByIndex(Integer.parseInt(value));
+                break;
+        }
         return new WebKeyword(driver);
     }
-
-    /**
-     * Set value for element by visible text
-     * @param webElement element to select value
-     * @param value value to select
-     * @return keyword selectByVisibleText
-     */
-    public WebKeyword selectByVisibleText(WebElement webElement, String value){
-        Select ddl = new Select(webElement);
-        ddl.selectByVisibleText(value);
-        return new WebKeyword(driver);
-    }
-
+    
     /**
      * Scroll to element in page
      * @param webElement element to scroll

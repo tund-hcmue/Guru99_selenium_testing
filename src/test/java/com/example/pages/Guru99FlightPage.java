@@ -1,5 +1,7 @@
 package com.example.pages;
 
+import com.example.core.keywords.WebKeyword.typeOfSelect;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -77,13 +79,13 @@ public class Guru99FlightPage extends BasePage{
             keyword.click(rdoOneWay);
         }
 
-        keyword.selectByValue(ddlPassenger, passenger);
-        keyword.selectByValue(ddlDepartingFrom, departingFrom);
-        keyword.selectByValue(ddlMonth, onMonth);
-        keyword.selectByValue(ddlDay, onDay);
-        keyword.selectByValue(ddlArrivingIn, arrivingIn);
-        keyword.selectByValue(ddlMonthReturn, returningMonth);
-        keyword.selectByValue(ddlDayReturn, returningDay);
+        keyword.setValueForElement(ddlPassenger, typeOfSelect.selectByValue, passenger);
+        keyword.setValueForElement(ddlDepartingFrom, typeOfSelect.selectByValue, departingFrom);
+        keyword.setValueForElement(ddlMonth, typeOfSelect.selectByValue, onMonth);
+        keyword.setValueForElement(ddlDay, typeOfSelect.selectByValue, onDay);
+        keyword.setValueForElement(ddlArrivingIn, typeOfSelect.selectByValue, arrivingIn);
+        keyword.setValueForElement(ddlMonthReturn, typeOfSelect.selectByValue, returningMonth);
+        keyword.setValueForElement(ddlDayReturn, typeOfSelect.selectByValue, returningDay);
     }
 
     /**
@@ -99,7 +101,7 @@ public class Guru99FlightPage extends BasePage{
         }else if(serviceClass == "Coach"){
             keyword.click(rdoEconomy);
         }
-        keyword.selectByVisibleText(ddlAirline, airline);
+        keyword.setValueForElement(ddlAirline, typeOfSelect.selectByVisibleText, airline);
     }
         
     /**

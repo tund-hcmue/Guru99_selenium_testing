@@ -6,9 +6,7 @@ import java.util.Map;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.example.core.configuration.ConfigurationReader;
-import com.example.core.configuration.driver.DriverFactory;
-
+import com.example.tests.BaseTest;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -44,12 +42,11 @@ public class ExtentTestManager {
         String base64Image;
         try {
             base64Image = "data:image/png;base64,"
-                    + ((TakesScreenshot) DriverFactory.getDriver(ConfigurationReader.getDriverFromPropertiesFile("browser"))).getScreenshotAs(OutputType.BASE64);
+                    + ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.BASE64);
             getTest().log(status, message, getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        // getTest().log(status, message, getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
+        }        
     }
 
     public static void logMessage(Status status, String message) {

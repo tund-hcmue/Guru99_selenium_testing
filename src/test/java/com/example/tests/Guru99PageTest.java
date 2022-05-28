@@ -1,14 +1,17 @@
 package com.example.tests;
 
 import com.example.core.datadriven.DataForTest;
+import com.example.core.utils.listener.ReportListener;
 import com.example.pages.Guru99AfterFlightFinderPage;
 import com.example.pages.Guru99FlightPage;
 import com.example.pages.Guru99HomePage;
 import com.example.pages.Guru99LoginPage;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(ReportListener.class)
 public class Guru99PageTest extends BaseTest{
     @Test(priority = 1, testName = "Verify User Login Successfully", dataProvider = "dataForLoginAccount", dataProviderClass = DataForTest.class)
     public void verifyUserLoginSuccessfully(String username, String password) throws InterruptedException{
